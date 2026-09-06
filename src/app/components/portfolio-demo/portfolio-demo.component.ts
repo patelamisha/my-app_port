@@ -27,24 +27,24 @@ export class PortfolioDemoComponent {
     frontend: {
       label: 'Frontend',
       eyebrow: '01 / interface',
-      title: 'Components with a clear job',
-      description: 'Standalone Angular sections keep the portfolio easy to extend without turning the page into one giant component.',
+      title: 'A focused operations workspace',
+      description: 'Angular components keep SignalDesk responsive and easy to evolve as the product grows.',
       technologies: 'Angular · TypeScript · CSS',
       progress: 92
     },
     api: {
       label: 'API',
       eyebrow: '02 / services',
-      title: 'Ready for real project data',
-      description: 'The project surface leaves room for typed services, API states, and the kind of data flow a production app needs.',
+      title: 'Structured data behind the UI',
+      description: 'A .NET API gives SignalDesk a clear home for typed services, API states, and production-ready data flow.',
       technologies: '.NET · REST · Typed models',
       progress: 68
     },
     delivery: {
       label: 'Delivery',
       eyebrow: '03 / release',
-      title: 'Built to keep moving',
-      description: 'A responsive layout, focused sections, and a small component footprint make iteration and deployment straightforward.',
+      title: 'Designed for the next release',
+      description: 'A responsive layout and clear project boundaries make SignalDesk straightforward to iterate on and ship.',
       technologies: 'Responsive · GitHub · CI-ready',
       progress: 84
     }
