@@ -515,6 +515,15 @@ footer .wrap{ display:flex; justify-content: space-between; color: var(--ink-fai
   50%{ background-position:100% 50%; }
   100%{ background-position:0% 50%; }
 }
+@keyframes heading-sheen{
+  0%, 18%{ background-position:0% 50%; }
+  55%, 72%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+@keyframes label-pulse{
+  0%, 100%{ letter-spacing:.03em; opacity:.72; }
+  50%{ letter-spacing:.12em; opacity:1; }
+}
 
 section{ isolation:isolate; }
 section:not(#contact)::before{
@@ -527,6 +536,14 @@ section:not(#contact)::after{
   pointer-events:none;
 }
 .section-head h2{ position:relative; width:max-content; max-width:100%; }
+.section-head h2, .hero h1 .grad-text{
+  background-image:linear-gradient(105deg, var(--ink) 22%, var(--cyan) 45%, var(--violet) 58%, var(--ink) 78%);
+  background-size:240% 100%;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:heading-sheen 7s ease-in-out infinite;
+}
+.section-head .section-tag{ letter-spacing:.03em; transition:letter-spacing .8s ease; }
+.section-head.in-view .section-tag{ animation:label-pulse 2.8s ease-in-out 1; }
 .section-head h2::after{
   content:""; position:absolute; left:0; bottom:-10px; width:42px; height:2px;
   background:var(--section-color, var(--cyan)); transform:scaleX(.35); transform-origin:left;
