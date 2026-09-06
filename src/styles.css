@@ -1,3 +1,21 @@
+
+/* ---------- PORTFOLIO DEMO ---------- */
+.portfolio-demo-tabs{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.portfolio-demo-tabs button{
+  border:1px solid var(--line); border-radius:100px; padding:7px 13px;
+  background:transparent; color:var(--ink-muted); cursor:pointer;
+  font:inherit; font-size:0.82rem; transition:border-color 0.25s, color 0.25s, background 0.25s;
+}
+.portfolio-demo-tabs button:hover,
+.portfolio-demo-tabs button.active{ border-color:var(--cyan); color:var(--ink); background:rgba(87, 226, 194, 0.08); }
+.portfolio-demo-detail{ border:1px solid var(--line-soft); border-radius:12px; padding:20px; background:rgba(255,255,255,0.02); }
+.portfolio-demo-eyebrow{ color:var(--cyan); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; }
+.portfolio-demo-detail h4{ margin-top:8px; font-size:1.08rem; }
+.portfolio-demo-detail p{ margin-top:8px; color:var(--ink-muted); font-size:0.9rem; max-width:62ch; }
+.portfolio-demo-meta{ display:flex; justify-content:space-between; gap:16px; margin-top:18px; color:var(--ink-muted); font-size:0.78rem; }
+.portfolio-demo-meta strong{ color:var(--ink); font-weight:600; }
+.portfolio-demo-meter{ height:5px; margin-top:8px; border-radius:100px; background:var(--line); overflow:hidden; }
+.portfolio-demo-meter span{ display:block; height:100%; border-radius:inherit; background:var(--grad); transition:width 0.35s ease; }
 :root{
   --bg: #090A10;
   --bg-elevated: #10121B;

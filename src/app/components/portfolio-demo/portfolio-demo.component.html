@@ -1,0 +1,29 @@
+<button class="demo-toggle" [class.open]="open" (click)="toggleOpen()">
+  {{ open ? 'Hide demo' : 'Try it live' }} <span class="chev">▾</span>
+</button>
+<div class="demo-panel" [class.open]="open">
+  <div class="demo-inner portfolio-demo">
+    <div class="portfolio-demo-tabs" role="tablist" aria-label="Portfolio architecture layers">
+      <button
+        *ngFor="let view of viewKeys"
+        type="button"
+        role="tab"
+        [attr.aria-selected]="activeView === view"
+        [class.active]="activeView === view"
+        (click)="selectView(view)"
+      >{{ views[view].label }}</button>
+    </div>
+    <div class="portfolio-demo-detail">
+      <span class="portfolio-demo-eyebrow">{{ views[activeView].eyebrow }}</span>
+      <h4>{{ views[activeView].title }}</h4>
+      <p>{{ views[activeView].description }}</p>
+      <div class="portfolio-demo-meta">
+        <span>{{ views[activeView].technologies }}</span>
+        <strong>{{ views[activeView].progress }}%</strong>
+      </div>
+      <div class="portfolio-demo-meter" aria-hidden="true">
+        <span [style.width.%]="views[activeView].progress"></span>
+      </div>
+    </div>
+  </div>
+</div>
