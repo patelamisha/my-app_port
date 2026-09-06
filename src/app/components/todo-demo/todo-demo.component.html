@@ -1,0 +1,26 @@
+<button class="demo-toggle" [class.open]="open" (click)="toggleOpen()">
+  {{ open ? 'Hide demo' : 'Try it live' }} <span class="chev">▾</span>
+</button>
+<div class="demo-panel" [class.open]="open">
+  <div class="demo-inner">
+    <form class="todo-form" (ngSubmit)="addTodo()">
+      <input
+        class="todo-input"
+        type="text"
+        placeholder="Add a task…"
+        autocomplete="off"
+        [(ngModel)]="newTodo"
+        name="newTodo"
+      />
+      <button class="todo-add" type="submit">Add</button>
+    </form>
+    <ul class="todo-list">
+      <li *ngIf="todos.length === 0" class="todo-empty">No tasks yet — add one above.</li>
+      <li *ngFor="let todo of todos; let i = index" [class.done]="todo.done">
+        <input type="checkbox" [(ngModel)]="todo.done" [name]="'done-' + i" />
+        <span class="txt">{{ todo.text }}</span>
+        <button class="todo-del" type="button" (click)="removeTodo(i)">Remove</button>
+      </li>
+    </ul>
+  </div>
+</div>

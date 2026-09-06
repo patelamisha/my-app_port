@@ -1,0 +1,17 @@
+<button class="demo-toggle" [class.open]="open" (click)="toggleOpen()">
+  {{ open ? 'Hide demo' : 'Try it live' }} <span class="chev">▾</span>
+</button>
+<div class="demo-panel" [class.open]="open">
+  <div class="demo-inner">
+    <div class="ttt-board">
+      <button
+        *ngFor="let cell of board; let i = index"
+        class="ttt-cell"
+        [disabled]="!!cell || !!result"
+        (click)="move(i)"
+      >{{ cell }}</button>
+    </div>
+    <div class="ttt-status">{{ status }}</div>
+    <button class="ttt-reset" (click)="reset()">Reset game</button>
+  </div>
+</div>
