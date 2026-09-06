@@ -1,7 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-type DemoView = 'frontend' | 'api' | 'delivery';
+type DemoView = 'frontend' | 'api' | 'delivery' | 'chat';
+
+interface ChatMessage {
+  from: 'bot' | 'user';
+  text: string;
+}
 
 interface ViewDetails {
   label: string;
@@ -15,14 +21,15 @@ interface ViewDetails {
 @Component({
   selector: 'app-portfolio-demo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './portfolio-demo.component.html'
 })
 export class PortfolioDemoComponent {
   open = false;
   activeView: DemoView = 'frontend';
+  chatInput = '';
 
-  readonly viewKeys: DemoView[] = ['frontend', 'api', 'delivery'];
+  readonly viewKeys: DemoView[] = ['frontend', 'api', 'delivery', 'chat'];
   readonly views: Record<DemoView, ViewDetails> = {
     frontend: {
       label: 'Frontend',
@@ -47,8 +54,20 @@ export class PortfolioDemoComponent {
       description: 'A responsive layout and clear project boundaries make SignalDesk straightforward to iterate on and ship.',
       technologies: 'Responsive · GitHub · CI-ready',
       progress: 84
+    },
+    chat: {
+      label: 'Chatbot',
+      eyebrow: '04 / assistant',
+      title: 'Ask SignalDesk',
+      description: 'A lightweight assistant can help teams find signals, summarize activity, and keep work moving.',
+      technologies: 'Angular · Forms · Conversation state',
+      progress: 76
     }
   };
+
+  messages: ChatMessage[] = [
+    { from: 'bot', text: 'Hi! I can help you explore the SignalDesk workspace.' }
+  ];
 
   toggleOpen(): void {
     this.open = !this.open;
@@ -56,5 +75,19 @@ export class PortfolioDemoComponent {
 
   selectView(view: DemoView): void {
     this.activeView = view;
+  }
+
+  sendMessage(): void {
+    const message = this.chatInput.trim();
+    if (!message) return;
+
+    this.messages.push({ from: 'user', text: message });
+    this.messages.push({
+      from: 'bot',
+      text: message.toLowerCase().includes('signal')
+        ? 'SignalDesk keeps active issues, owners, and status updates in one focused view.'
+        : 'Try asking about signals, the queue, or how SignalDesk is built.'
+    });
+    this.chatInput = '';
   }
 }

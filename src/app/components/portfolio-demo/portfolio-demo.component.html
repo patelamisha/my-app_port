@@ -13,7 +13,7 @@
         (click)="selectView(view)"
       >{{ views[view].label }}</button>
     </div>
-    <div class="portfolio-demo-detail">
+    <div class="portfolio-demo-detail" *ngIf="activeView !== 'chat'">
       <span class="portfolio-demo-eyebrow">{{ views[activeView].eyebrow }}</span>
       <h4>{{ views[activeView].title }}</h4>
       <p>{{ views[activeView].description }}</p>
@@ -24,6 +24,17 @@
       <div class="portfolio-demo-meter" aria-hidden="true">
         <span [style.width.%]="views[activeView].progress"></span>
       </div>
+    </div>
+    <div class="portfolio-chat" *ngIf="activeView === 'chat'">
+      <div class="portfolio-chat-messages">
+        <div *ngFor="let message of messages" class="portfolio-chat-message" [class.user]="message.from === 'user'">
+          {{ message.text }}
+        </div>
+      </div>
+      <form class="portfolio-chat-form" (ngSubmit)="sendMessage()">
+        <input [(ngModel)]="chatInput" name="chatInput" placeholder="Ask about SignalDesk..." autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
     </div>
   </div>
 </div>
